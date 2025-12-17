@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<h1 class="title">Admin Dashboard</h1>
+
+<div class="admin-container">
+
+    <!-- Add New Outfit -->
+    <div class="card">
+        <h2>Add New Outfit</h2>
+        <input type="text" id="outfitName" placeholder="Outfit Name">
+        <input type="text" id="outfitImage" placeholder="Image URL">
+        <button onclick="addOutfit()">Add Outfit</button>
+    </div>
+
+    <!-- Outfit List -->
+    <div class="card">
+        <h2>Outfit List</h2>
+        <div id="outfitList"></div>
+    </div>
+
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>

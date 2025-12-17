@@ -1,9 +1,16 @@
-* {
+* 
+body {
+    background-color: #e6ccb2;   /* light beige aesthetic */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+
 }
+
+
+
+   
 
 /* Header */
 header {
@@ -21,20 +28,20 @@ header {
     font-weight: bold;
 }
 .logo span { 
-    color: #ff4b8a; 
+    color: #a47864; 
 }
 
 nav a {
     margin-left: 25px;
     text-decoration: none;
     font-size: 18px;
-    color: #111;
+    color: #57380f;
     transition: .3s;
 }
-
+whit
 nav a:hover,
 nav .active {
-    color: #ff4b8a;
+    color: #634638;
 }
 
 /* About Section */
@@ -50,18 +57,23 @@ nav .active {
 }
 
 .about-us h1 span {
-    color: #ff4b8a;
+    color: #a47864;;      
 }
 
 .row {
     display: flex;
+    justify-content:center;
     align-items: center;
-    justify-content: center;
     gap: 40px;
+}
+.image{
+    display:flex;
+    flex-direction: column;
+    gap: 20px
 }
 
 .image img {
-    width: 500px;
+    width: 0px;
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
@@ -96,5 +108,40 @@ nav .active {
 }
 
 .btn:hover {
-    background: #ff4b8a;
+    background: #a47864;
+}
+/* Top and Bottom Banner Images */
+.about-banner img {
+    display: block;       /* removes inline gaps */
+    margin: 0 auto;       /* centers horizontally */
+    width: 40%;           /* adjust size */
+    height: auto;         /* keeps aspect ratio */
+    object-fit: cover;
+}
+
+/* About Us Text Box */
+.middle-text 
+{
+    width: 40%;                   /* same width as images */
+    margin: 40px auto;            /* centers and adds space from images */
+    background: white;
+    padding: 25px;
+    text-align: center;           /* center text */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-family: 'Poppins', sans-serif;   /* example new font */
+    font-weight: 100;                   /* lighter text */
+    color: #a47864;        
+}
+                  /* soft grey colo
+
+
+
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .about-banner img,
+    .middle-text {
+        width: 95%;
+    }
 }
