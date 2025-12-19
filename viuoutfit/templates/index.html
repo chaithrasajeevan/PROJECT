@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outfit Recommender</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+ <!-- LOGIN / SIGNUP POPUP MODAL -->admingct-Veriton-M200-H610
+<div id="authModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Welcome!</h2>
+        <p>Please Login or Signup to continue</p>
+
+        <div class="auth-buttons">
+            <a href="login.html" class="btn">Login</a>
+            <a href="signup.html" class="btn">Signup</a>
+        </div>
+    </div>
+</div>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="logo">ViuOutfit<span>.</span></div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login/Signup</a>
+            <a href="about.html">About</a>
+            <a href="reviews.html">Reviews</a>
+        </nav>
+
+        <div class="icons">
+            <i class="heart">❤</i>
+            <i class="cart">🛒</i>
+            <i class="fa-regular fa-user user"></i>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Find Your Perfect Outfit</h1>
+            <h2>Smart · Stylish · Personalized</h2>
+            <p>
+                Discover outfits that match your style, weather, and personality.
+                Our AI-powered system helps you choose the perfect look effortlessly!
+            </p>
+            
+
+            <button id="findOutfit">Find my Outfit</button>
+        </div>
+
+        <div class="hero-image">
+            <img src="frontimg.jpeg" alt="Outfit Image">
+        </div>
+    </section>
+
+
+    <script>
+        // Open modal
+        document.getElementById("findOutfit").addEventListener("click", function () {
+            document.getElementById("authModal").style.display = "flex";
+        });
+
+        // Close modal with X
+        document.querySelector(".close").addEventListener("click", function () {
+            document.getElementById("authModal").style.display = "none";
+        });
+
+        // Close modal when clicking outside content
+        window.addEventListener("click", function (event) {
+            let modal = document.getElementById("authModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+
+</body>
+</html>

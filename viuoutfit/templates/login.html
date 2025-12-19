@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ViuOutfit</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Welcome Back</h2>
+    <p>Login to continue</p>
+
+    <!-- IMPORTANT CHANGES START HERE -->
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="input-box">
+            <input type="email" name="email" placeholder="Email" required>
+        </div>
+
+        <div class="input-box">
+            <input type="password" name="password" placeholder="Password" required>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+
+        {% if error %}
+            <small class="error">{{ error }}</small>
+        {% endif %}
+
+        <p class="signup-link">
+            Don't have an account?
+            <a href="{% url 'signup' %}">Signup</a>
+        </p>
+    </form>
+</div>
+
+<script src="{% static 'js/login.js' %}"></script>
+</body>
+</html>
