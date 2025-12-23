@@ -13,7 +13,6 @@
     <h2>Welcome Back</h2>
     <p>Login to continue</p>
 
-    <!-- IMPORTANT CHANGES START HERE -->
     <form method="POST">
         {% csrf_token %}
 
@@ -33,9 +32,9 @@
 
         <p class="signup-link">
             Don't have an account?
-            {% comment %}
+            
                 <a href="{% url 'signup' %}">Signup</a>
-            {% endcomment %}
+            
         </p>
     </form>
 </div>
