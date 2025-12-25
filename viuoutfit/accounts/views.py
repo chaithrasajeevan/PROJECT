@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -13,7 +15,7 @@ def login_view(request):
         else:
             return render(request, 'login.html', {'error': 'Invalid email or password'})
 
-    return render(request, 'login.html')
+    return render(request, 'accounts/login.html')
 
 def logout_view(request):
     logout(request)
@@ -28,19 +30,20 @@ def signup_view(request):
 
        
         if password != confirm_password:
-            return render(request, 'signup.html', {
+            return render(request, 'accounts/signup.html', {
                 'error': 'Passwords do not match'
             })
 
         
         if User.objects.filter(username=email).exists():
-            return render(request, 'signup.html', {
+            return render(request, 'accounts/signup.html', {
                 'error': 'Email already registered'
             })
 
       
         user = User.objects.create_user(
             username=email,
+            email=email,
             password=password,
             first_name=name
         )
@@ -48,10 +51,10 @@ def signup_view(request):
 
         return redirect('/login/')
 
-    return render(request, 'signup.html')
+    return render(request, 'accounts/signup.html')
 
 def home_view(request):
-    return render(request, 'index.html')
+    return render(request, 'accounts/index.html')
 
 def admin_login(request):
     if request.method == "POST":
@@ -66,10 +69,10 @@ def admin_login(request):
         else:
             return render(
                 request,
-                'adminlogin.html',
+                'accounts/adminlogin.html',
                 {'error': 'Invalid admin credentials'}
             )
 
-    return render(request, 'adminlogin.html')
+    return render(request, 'accounts/adminlogin.html')
 
 
