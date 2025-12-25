@@ -5,7 +5,7 @@
     <title>Admin Login</title>
 
     {% load static %}
-    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/static/css/adminlogin.css' %}">
 </head>
 <body>
 
@@ -17,14 +17,14 @@
         <form id="loginForm" method="POST">
             {% csrf_token %}
 
-            <input type="text" name="username" placeholder="Admin ID" required>
+            <input type="text" name="username" placeholder="Admin name" required>
             <input type="password" name="password" placeholder="Password" required>
 
             <button type="submit">Login</button>
         </form>
 
         <div class="forgot">
-            <a href="#">Forgot Password? Click to reset</a>
+            <a href="#">Forgot Password?   Click to reset</a>
         </div>
     </div>
 
