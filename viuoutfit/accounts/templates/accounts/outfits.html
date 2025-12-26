@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Outfit Recommendations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="outfits.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Outfit Recommendations</h1>
+        <form id="outfitForm">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="">--Select--</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <br>
+            <br>
+            <label for="bodyType">Body Type:</label>
+            <select id="bodyType" name="bodyType">
+                <option value="">--Select--</option>
+                <option value="hourglass">Hourglass</option>
+                <option value="pear">Pear</option>
+                <option value="apple">Apple</option>
+                <option value="rectangle">Rectangle</option>
+            </select>
+             <br>
+             <br>
+            <label for="occasion">Occasion:</label>
+            <select id="occasion" name="occasion">
+                <option value="">--Select--</option>
+                <option value="casual">Casual</option>
+                <option value="formal">Formal</option>
+                <option value="party">Party</option>
+            </select>
+            <br>
+            <br>
+            <label for="weather">Weather:</label>
+            <select id="weather" name="weather">
+                <option value="">--Select--</option>
+                <option value="hot">Hot</option>
+                <option value="cold">Cold</option>
+                <option value="rainy">Rainy</option>
+            </select>
+            <br>
+            <br>
+            <label for="style">Style:</label>
+            <select id="style" name="style">
+                <option value="">--Select--</option>
+                <option value="modern">Modern</option>
+                <option value="classic">Classic</option>
+                <option value="boho">Boho</option>
+            </select>
+             <br>
+             <br>
+            <label for="color">Color:</label>
+            <input type="text" id="color" name="color" placeholder="Enter top or bottom color">
+             <br>
+             <br>
+            <button type="submit">Get Recommendations</button>
+        </form>
+
+        <div class="results" id="results">
+            <div class="card-container" id="cardContainer">
+                <p class="no-results">No matching outfits found.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+const form = document.getElementById('outfitForm');
+const cardContainer = document.getElementById('cardContainer');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const gender = document.getElementById('gender').value;
+    const bodyType = document.getElementById('bodyType').value;
+    const occasion = document.getElementById('occasion').value;
+    const weather = document.getElementById('weather').value;
+    const style = document.getElementById('style').value;
+    const color = document.getElementById('color').value.trim().toLowerCase();
+
+    const dataset = [
+        {name: 'Casual Top', gender: 'male', body_type: 'hourglass', occasion: 'casual', weather: 'hot', style: 'modern', color: 'orange'},
+        {name: 'Boho Skirt', gender: 'female', body_type: 'pear', occasion: 'party', weather: 'hot', style: 'boho', color: 'pink'},
+        {name: 'Formal Blazer', gender: 'male', body_type: 'rectangle', occasion: 'formal', weather: 'cold', style: 'classic', color: 'green'}
+    ];
+
+    const recommendations = dataset.filter(item => {
+        return (
+            (item.gender === gender || gender === '') &&
+            (item.body_type === bodyType || bodyType === '') &&
+            (item.occasion === occasion || occasion === '') &&
+            (item.weather === weather || weather === '') &&
+            (item.style === style || style === '') &&
+            (item.color.toLowerCase() === color || color === '')
+        );
+    });
+
+    cardContainer.innerHTML = '';
+
+    if (recommendations.length === 0) {
+        cardContainer.innerHTML = '<p class="no-results">No matching outfits found.</p>';
+    } else {
+        recommendations.forEach(outfit => {
+            const card = document.createElement('div');
+            card.className = 'outfit-card';
+            card.innerHTML = `
+                <div class="outfit-image" style="background-color:${outfit.color}"></div>
+                <div class="outfit-name">${outfit.name}</div>
+                <div class="outfit-details">Color: <span class="color-swatch" style="background-color:${outfit.color}"></span></div>
+            `;
+            cardContainer.appendChild(card);
+        });
+    }
+});
+</script>
+
